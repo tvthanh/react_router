@@ -6,7 +6,7 @@ export default class Nav extends React.Component {
     super()
     this.state = {
       collapsed: true
-    }
+    };
   }
 
   toggleCollapse() {
@@ -16,13 +16,14 @@ export default class Nav extends React.Component {
 
   render() {
     const { location } = this.props;
-    const collapsed = this.state;
+    const { collapsed } = this.state;
 
     const homeClass = location.pathname === '/' ? 'active' : '';
     const aboutClass = location.pathname.match(/^\/about/) ? 'active' : '';
-    const featureClass = location.pathname.match(/^\/feature/) ? 'active' : '';
-    const archiveClass = location.pathname.match(/^\/archive/) ? 'active' : '';
+    const newsClass = location.pathname.match(/^\/news/) ? 'active' : '';
+    const archivesClass = location.pathname.match(/^\/archives/) ? 'active' : '';
     const contactClass = location.pathname.match(/^\/contact/) ? 'active' : '';
+    const navClass = collapsed ? 'collapse' : '';
 
     return (
       <nav class="navbar navbar-default navbar-fixed-top">
@@ -36,7 +37,7 @@ export default class Nav extends React.Component {
             </button>
             <Link class="navbar-brand" to="/" onClick={this.toggleCollapse.bind(this)}>Project name</Link>
           </div>
-          <div id="navbar" class="navbar-collapse collapse">
+          <div id="navbar" class={"navbar-collapse " + navClass}>
             <ul class="nav navbar-nav">
               <li class={homeClass}>
                 <IndexLink to="/" onClick={this.toggleCollapse.bind(this)}>Home</IndexLink>
@@ -44,10 +45,13 @@ export default class Nav extends React.Component {
               <li class={aboutClass}>
                 <Link to="about" onClick={this.toggleCollapse.bind(this)}>About</Link>
               </li>
-              <li>
-                <Link to="feature" onClick={this.toggleCollapse.bind(this)}>Feature</Link>
+              <li class={newsClass}>
+                <Link to="news" onClick={this.toggleCollapse.bind(this)}>News</Link>
               </li>
-              <li>
+              <li class={archivesClass}>
+                <Link to="archives" onClick={this.toggleCollapse.bind(this)}>Archives</Link>
+              </li>
+              <li class={contactClass}>
                 <Link to="contact" onClick={this.toggleCollapse.bind(this)}>Contact</Link>
               </li>
             </ul>
