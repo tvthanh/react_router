@@ -35,7 +35,7 @@ export default class Nav extends React.Component {
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
             </button>
-            <Link class="navbar-brand" to="/" onClick={this.toggleCollapse.bind(this)}>Project name</Link>
+            <Link class="navbar-brand" to="/" onClick={this.toggleCollapse.bind(this)}>React Router</Link>
           </div>
           <div id="navbar" class={"navbar-collapse " + navClass}>
             <ul class="nav navbar-nav">
